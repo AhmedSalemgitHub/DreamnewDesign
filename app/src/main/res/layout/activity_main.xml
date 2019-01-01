@@ -25,7 +25,7 @@
             android:padding="16dp"
             android:text="بياناتي"
             android:textColor="@color/textTabBright"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/dream_label_textView"
@@ -36,7 +36,7 @@
             android:padding="16dp"
             android:text="الاحلام"
             android:textColor="@color/textTabLight"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/notification_label_textView"
@@ -47,7 +47,7 @@
             android:padding="16dp"
             android:text="الاشعارات"
             android:textColor="@color/textTabLight"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
@@ -59,4 +59,19 @@
         android:layout_alignParentBottom="true">
 
     </android.support.v4.view.ViewPager>
+
+    <Button
+        android:id="@+id/btn_add_dream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mainPager"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toEndOf="@+id/tabs_layout"
+        android:text="اضافه حلم"
+        android:textSize="14sp" />
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mProfileLabel;
     private TextView mDreamsLabel;
     private TextView mNotificationLabel;
+    private Button mAddDreamButton;
 
     private ViewPager mMainPage;
 
@@ -50,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
         mProfileLabel = (TextView) findViewById(R.id.profile_label_textView);
         mDreamsLabel = (TextView) findViewById(R.id.dream_label_textView);
         mNotificationLabel = (TextView) findViewById(R.id.notification_label_textView);
+
+        mAddDreamButton = (Button) findViewById(R.id.btn_add_dream);
+
+        mAddDreamButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         mMainPage = (ViewPager) findViewById(R.id.mainPager);
         mPagerViewAdapter = new PagerViewAdapter(getSupportFragmentManager());
@@ -100,35 +111,35 @@ public class MainActivity extends AppCompatActivity {
         if (i == 0)
         {
             mProfileLabel.setTextColor(getResources().getColor(R.color.textTabBright));
-            mProfileLabel.setTextSize(24);
+            mProfileLabel.setTextSize(20);
 
             mDreamsLabel.setTextColor(getResources().getColor(R.color.textTabLight));
-            mDreamsLabel.setTextSize(16);
+            mDreamsLabel.setTextSize(14);
 
             mNotificationLabel.setTextColor(getResources().getColor(R.color.textTabLight));
-            mNotificationLabel.setTextSize(16);
+            mNotificationLabel.setTextSize(14);
         }
         else if (i == 1)
         {
             mProfileLabel.setTextColor(getResources().getColor(R.color.textTabLight));
-            mProfileLabel.setTextSize(16);
+            mProfileLabel.setTextSize(14);
 
             mDreamsLabel.setTextColor(getResources().getColor(R.color.textTabBright));
-            mDreamsLabel.setTextSize(24);
+            mDreamsLabel.setTextSize(20);
 
             mNotificationLabel.setTextColor(getResources().getColor(R.color.textTabLight));
-            mNotificationLabel.setTextSize(16);
+            mNotificationLabel.setTextSize(14);
         }
         else if ( i == 2)
         {
             mProfileLabel.setTextColor(getResources().getColor(R.color.textTabLight));
-            mProfileLabel.setTextSize(16);
+            mProfileLabel.setTextSize(14);
 
             mDreamsLabel.setTextColor(getResources().getColor(R.color.textTabLight));
-            mDreamsLabel.setTextSize(16);
+            mDreamsLabel.setTextSize(14);
 
             mNotificationLabel.setTextColor(getResources().getColor(R.color.textTabBright));
-            mNotificationLabel.setTextSize(26);
+            mNotificationLabel.setTextSize(20);
         }
     }
 }

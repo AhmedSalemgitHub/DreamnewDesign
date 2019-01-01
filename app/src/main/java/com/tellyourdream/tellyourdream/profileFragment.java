@@ -23,6 +23,7 @@ public class profileFragment extends Fragment {
     private Button mLogoutButton;
     private FirebaseAuth mAuth;
     private EditText profileName, profileEmail, profileAge, profileMarital, profileGender;
+    private String email;
 
     SharedPreferences preferences;
 
@@ -50,7 +51,9 @@ public class profileFragment extends Fragment {
         profileMarital = view.findViewById(R.id.profileMarital_editText);
         profileGender = view.findViewById(R.id.profileGender_editText);
 
-        preferences = getActivity().getSharedPreferences("localData", Context.MODE_PRIVATE);
+        email = getActivity().getIntent().getStringExtra("email");
+
+        preferences = getActivity().getSharedPreferences(email, Context.MODE_PRIVATE);
 
         if (preferences != null) {
             profileName.setText(preferences.getString("name", "No Data found"));
@@ -72,5 +75,6 @@ public class profileFragment extends Fragment {
 
         return view;
     }
+
 
 }

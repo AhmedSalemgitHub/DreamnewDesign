@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                               if (task.isSuccessful())
                               {
                                   Intent tomainintent = new Intent(LoginActivity.this,MainActivity.class);
+                                  tomainintent.putExtra("email", email);
                                   startActivity(tomainintent);
                                   finish();
 
