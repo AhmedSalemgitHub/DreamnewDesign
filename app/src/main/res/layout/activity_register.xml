@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="انشاء حساب جديد"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/register_name_editText"
@@ -38,7 +38,8 @@
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
         android:paddingRight="8dp"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/register_email_editText"
@@ -61,7 +62,8 @@
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
         android:paddingRight="8dp"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/register_password_editText"
@@ -84,7 +86,8 @@
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
         android:paddingRight="8dp"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/register_marital_editText"
@@ -107,7 +110,8 @@
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
         android:paddingRight="8dp"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/register_gender_editText"
@@ -130,7 +134,8 @@
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
         android:paddingRight="8dp"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/register_age_editText"
@@ -153,7 +158,8 @@
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
         android:paddingRight="8dp"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/button_register"
@@ -169,8 +175,8 @@
         android:background="@drawable/input_background"
         android:text="إنشاء الحساب"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="normal" />
 
     <Button
         android:id="@+id/beck_to_login_button"
@@ -186,8 +192,8 @@
         android:background="@drawable/input_background"
         android:text="الرجوع لشاشة الدخول"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="normal" />
 
     <ProgressBar
         android:id="@+id/progressBar"

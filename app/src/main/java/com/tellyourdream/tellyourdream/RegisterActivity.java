@@ -1,6 +1,7 @@
 package com.tellyourdream.tellyourdream;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore mFireStore;
 
-    String name, email, password, martial, gender, age, user_id ;
+    String name, email, password, marital, gender, age, user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +71,12 @@ public class RegisterActivity extends AppCompatActivity {
                 name = mName.getText().toString();
                 email = mEmail.getText().toString();
                 password = mPassword.getText().toString();
-                martial = mMarital.getText().toString();
+                marital = mMarital.getText().toString();
                 gender = mGender.getText().toString();
                 age = mAge.getText().toString();
 
                 if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) &&
-                        !TextUtils.isEmpty(martial) && !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(age))
+                        !TextUtils.isEmpty(marital) && !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(age))
                 {
 
                     mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -88,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                 userData.put("name", name);
                                 userData.put("email",email);
-                                userData.put("marital", martial);
+                                userData.put("marital", marital);
                                 userData.put("gender",gender);
                                 userData.put("age",age);
 
@@ -99,6 +100,13 @@ public class RegisterActivity extends AppCompatActivity {
                                      mProgressBar.setVisibility(View.INVISIBLE);
                                      Intent toMainIntent = new Intent(RegisterActivity.this,MainActivity.class);
                                      startActivity(toMainIntent);
+                                     SharedPreferences.Editor editor = getSharedPreferences("localData", MODE_PRIVATE).edit();
+                                     editor.putString("name", name);
+                                     editor.putString("email", email);
+                                     editor.putString("marital", marital);
+                                     editor.putString("gender", gender);
+                                     editor.putString("age", age);
+                                     editor.apply();
                                      finish();
                                  }
                              });

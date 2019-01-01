@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".DreamsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <RelativeLayout style="@style/fragmentStyle">
 
         <android.support.v7.widget.RecyclerView

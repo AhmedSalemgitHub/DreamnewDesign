@@ -1,7 +1,9 @@
 package com.tellyourdream.tellyourdream;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,6 +23,10 @@ public class profileFragment extends Fragment {
     private Button mLogoutButton;
     private FirebaseAuth mAuth;
     private EditText profileName, profileEmail, profileAge, profileMarital, profileGender;
+
+    SharedPreferences preferences;
+
+
 
 
     public profileFragment() {
@@ -44,6 +50,15 @@ public class profileFragment extends Fragment {
         profileMarital = view.findViewById(R.id.profileMarital_editText);
         profileGender = view.findViewById(R.id.profileGender_editText);
 
+        preferences = getActivity().getSharedPreferences("localData", Context.MODE_PRIVATE);
+
+        if (preferences != null) {
+            profileName.setText(preferences.getString("name", "No Data found"));
+            profileEmail.setText(preferences.getString("email", "No Data found"));
+            profileAge.setText(preferences.getString("age", "No Data found"));
+            profileMarital.setText(preferences.getString("marital", "No Data found"));
+            profileGender.setText(preferences.getString("gender", "No Data found"));
+        }
 
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override

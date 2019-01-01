@@ -2,6 +2,7 @@ package com.tellyourdream.tellyourdream;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +19,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.Nullable;
 
@@ -40,7 +42,7 @@ public class DreamsFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dreams, container, false);
@@ -62,14 +64,18 @@ public class DreamsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        mFirestore.collection("Users").addSnapshotListener(getActivity(),new EventListener<QuerySnapshot>() {
+        dreamsList.clear();
+
+        mFirestore.collection("Users").addSnapshotListener(Objects.requireNonNull(getActivity()), new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                for (DocumentChange doc: queryDocumentSnapshots.getDocumentChanges()){
-                    if (doc.getType() == DocumentChange.Type.ADDED){
-                        Dreams dreams = doc.getDocument().toObject(Dreams.class);
-                        dreamsList.add(dreams);
-                        dreamsRecyclerAdapter.notifyDataSetChanged();
+                if (queryDocumentSnapshots != null) {
+                    for (DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()) {
+                        if (doc.getType() == DocumentChange.Type.ADDED) {
+                            Dreams dreams = doc.getDocument().toObject(Dreams.class);
+                            dreamsList.add(dreams);
+                            dreamsRecyclerAdapter.notifyDataSetChanged();
+                        }
                     }
                 }
             }
