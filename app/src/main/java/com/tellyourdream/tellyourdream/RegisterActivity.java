@@ -99,7 +99,11 @@ public class RegisterActivity extends AppCompatActivity {
                                  public void onSuccess(Void aVoid) {
                                      mProgressBar.setVisibility(View.INVISIBLE);
                                      Intent toMainIntent = new Intent(RegisterActivity.this,MainActivity.class);
+                                     toMainIntent.putExtra("name", name);
                                      toMainIntent.putExtra("email", email);
+                                     toMainIntent.putExtra("marital", marital);
+                                     toMainIntent.putExtra("gender", gender);
+                                     toMainIntent.putExtra("age", age);
 
                                      SharedPreferences.Editor editor = getSharedPreferences(email, MODE_PRIVATE).edit();
                                      editor.putString("name", name);

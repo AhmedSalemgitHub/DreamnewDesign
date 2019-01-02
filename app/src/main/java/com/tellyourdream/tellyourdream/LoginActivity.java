@@ -1,6 +1,7 @@
 package com.tellyourdream.tellyourdream;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,6 +41,12 @@ public class LoginActivity extends AppCompatActivity {
         if (currentUser != null)
         {
             Intent tomain = new Intent(LoginActivity.this,MainActivity.class);
+            SharedPreferences pref = this.getSharedPreferences(currentUser.getEmail(), MODE_PRIVATE);
+            tomain.putExtra("name", pref.getString("name", currentUser.getDisplayName()));
+            tomain.putExtra("email", pref.getString("email", currentUser.getEmail()));
+            tomain.putExtra("marital", pref.getString("marital", "error"));
+            tomain.putExtra("gender", pref.getString("gender", "error"));
+            tomain.putExtra("age", pref.getString("age", "error"));
             startActivity(tomain);
             finish();
         }
@@ -81,7 +88,12 @@ public class LoginActivity extends AppCompatActivity {
                               if (task.isSuccessful())
                               {
                                   Intent tomainintent = new Intent(LoginActivity.this,MainActivity.class);
-                                  tomainintent.putExtra("email", email);
+                                  SharedPreferences pref = getSharedPreferences(email, MODE_PRIVATE);
+                                  tomainintent.putExtra("name", pref.getString("name", "error"));
+                                  tomainintent.putExtra("email", pref.getString("email", "error"));
+                                  tomainintent.putExtra("marital", pref.getString("marital", "error"));
+                                  tomainintent.putExtra("gender", pref.getString("gender", "error"));
+                                  tomainintent.putExtra("age", pref.getString("age", "error"));
                                   startActivity(tomainintent);
                                   finish();
 

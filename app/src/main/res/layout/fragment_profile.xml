@@ -64,6 +64,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/gray_round_background"
+                android:clickable="false"
+                android:editable="false"
+                android:enabled="false"
                 android:inputType="textPersonName"
                 android:paddingStart="8dp"
                 android:paddingLeft="8dp"
@@ -73,6 +76,7 @@
                 android:paddingBottom="8dp"
                 android:text="Name"
                 android:textAlignment="center"
+                android:textColor="#fff"
                 android:textSize="14sp" />
 
             <EditText
@@ -87,6 +91,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/gray_round_background"
+                android:clickable="false"
+                android:editable="false"
+                android:enabled="false"
                 android:inputType="textPersonName"
                 android:paddingStart="8dp"
                 android:paddingLeft="8dp"
@@ -96,6 +103,7 @@
                 android:paddingBottom="8dp"
                 android:text="Email"
                 android:textAlignment="center"
+                android:textColor="#fff"
                 android:textSize="14sp" />
 
             <EditText
@@ -110,6 +118,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/gray_round_background"
+                android:clickable="false"
+                android:editable="false"
+                android:enabled="false"
                 android:inputType="textPersonName"
                 android:paddingStart="8dp"
                 android:paddingLeft="8dp"
@@ -119,6 +130,7 @@
                 android:paddingBottom="8dp"
                 android:text="Age"
                 android:textAlignment="center"
+                android:textColor="#fff"
                 android:textSize="14sp" />
 
             <EditText
@@ -133,6 +145,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/gray_round_background"
+                android:clickable="false"
+                android:editable="false"
+                android:enabled="false"
                 android:inputType="textPersonName"
                 android:paddingStart="8dp"
                 android:paddingLeft="8dp"
@@ -142,6 +157,7 @@
                 android:paddingBottom="8dp"
                 android:text="Marital"
                 android:textAlignment="center"
+                android:textColor="#fff"
                 android:textSize="14sp" />
 
             <EditText
@@ -156,6 +172,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/gray_round_background"
+                android:clickable="false"
+                android:editable="false"
+                android:enabled="false"
                 android:inputType="textPersonName"
                 android:paddingStart="8dp"
                 android:paddingLeft="8dp"
@@ -165,6 +184,7 @@
                 android:paddingBottom="8dp"
                 android:text="Gender"
                 android:textAlignment="center"
+                android:textColor="#fff"
                 android:textSize="14sp" />
 
 

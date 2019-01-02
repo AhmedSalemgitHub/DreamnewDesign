@@ -107,6 +107,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+//        mAuth = FirebaseAuth.getInstance();
+//        mAuth.signOut();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        mAuth = FirebaseAuth.getInstance();
+//        mAuth.signOut();
+    }
+
     private void changeTabes(int i) {
         if (i == 0)
         {

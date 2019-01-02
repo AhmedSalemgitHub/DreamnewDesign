@@ -23,17 +23,11 @@ public class profileFragment extends Fragment {
     private Button mLogoutButton;
     private FirebaseAuth mAuth;
     private EditText profileName, profileEmail, profileAge, profileMarital, profileGender;
-    private String email;
-
-    SharedPreferences preferences;
-
-
 
 
     public profileFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -45,28 +39,23 @@ public class profileFragment extends Fragment {
 
         mLogoutButton = view.findViewById(R.id.profile_logout_button);
 
+
         profileName = view.findViewById(R.id.profileName_editText);
         profileEmail = view.findViewById(R.id.profileEmail_editText);
         profileAge = view.findViewById(R.id.profileAge_editText);
         profileMarital = view.findViewById(R.id.profileMarital_editText);
         profileGender = view.findViewById(R.id.profileGender_editText);
 
-        email = getActivity().getIntent().getStringExtra("email");
-
-        preferences = getActivity().getSharedPreferences(email, Context.MODE_PRIVATE);
-
-        if (preferences != null) {
-            profileName.setText(preferences.getString("name", "No Data found"));
-            profileEmail.setText(preferences.getString("email", "No Data found"));
-            profileAge.setText(preferences.getString("age", "No Data found"));
-            profileMarital.setText(preferences.getString("marital", "No Data found"));
-            profileGender.setText(preferences.getString("gender", "No Data found"));
-        }
+        profileName.setText(getActivity().getIntent().getStringExtra("name"));
+        profileEmail.setText(getActivity().getIntent().getStringExtra("email"));
+        profileAge.setText(getActivity().getIntent().getStringExtra("age"));
+        profileMarital.setText(getActivity().getIntent().getStringExtra("marital"));
+        profileGender.setText(getActivity().getIntent().getStringExtra("gender"));
 
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 mAuth.signOut();
+                mAuth.signOut();
                 Intent intent = new Intent(container.getContext(),LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();
