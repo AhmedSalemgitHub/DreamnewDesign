@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
+ *
  */
 public class profileFragment extends Fragment {
 
@@ -46,11 +47,11 @@ public class profileFragment extends Fragment {
         profileMarital = view.findViewById(R.id.profileMarital_editText);
         profileGender = view.findViewById(R.id.profileGender_editText);
 
-        profileName.setText(getActivity().getIntent().getStringExtra("name"));
-        profileEmail.setText(getActivity().getIntent().getStringExtra("email"));
-        profileAge.setText(getActivity().getIntent().getStringExtra("age"));
-        profileMarital.setText(getActivity().getIntent().getStringExtra("marital"));
-        profileGender.setText(getActivity().getIntent().getStringExtra("gender"));
+        profileName.setText(MainActivity.prefname);
+        profileEmail.setText(MainActivity.prefemail);
+        profileAge.setText(MainActivity.prefage);
+        profileMarital.setText(MainActivity.prefmarital);
+        profileGender.setText(MainActivity.prefgender);
 
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
