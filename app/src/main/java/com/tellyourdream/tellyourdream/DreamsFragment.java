@@ -10,6 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.tellyourdream.tellyourdream.DreamsRecyclerAdapter;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -35,6 +41,10 @@ public class DreamsFragment extends Fragment {
     private DreamsRecyclerAdapter dreamsRecyclerAdapter;
 
     private FirebaseFirestore mFirestore;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+    private Query firebaseQuery;
+    private com.google.firebase.firestore.Query mfireStoreQuery;
 
     public DreamsFragment() {
         // Required empty public constructor
@@ -49,6 +59,7 @@ public class DreamsFragment extends Fragment {
 
         mFirestore = FirebaseFirestore.getInstance();
 
+
         mDreamsListView = (RecyclerView) view.findViewById(R.id.Dreams);
 
         dreamsList = new ArrayList<>();
@@ -57,28 +68,48 @@ public class DreamsFragment extends Fragment {
         mDreamsListView.setHasFixedSize(true);
         mDreamsListView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         mDreamsListView.setAdapter(dreamsRecyclerAdapter);
-        return view;
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        dreamsList.clear();
-
-        mFirestore.collection("Users").addSnapshotListener(Objects.requireNonNull(getActivity()), new EventListener<QuerySnapshot>() {
+        firebaseQuery = mFirebaseDatabase.getReference().child("dream").orderByChild("ownerEmail").equalTo(MainActivity.prefemail);
+        firebaseQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if (queryDocumentSnapshots != null) {
-                    for (DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()) {
-                        if (doc.getType() == DocumentChange.Type.ADDED) {
-                            Dreams dreams = doc.getDocument().toObject(Dreams.class);
-                            dreamsList.add(dreams);
-                            dreamsRecyclerAdapter.notifyDataSetChanged();
-                        }
-                    }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot queryDream : dataSnapshot.getChildren()) {
+                    oldDreams oldDream = queryDream.getValue(oldDreams.class);
+                    oldDream.setParentKey(queryDream.getRef().getKey());
+
                 }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+        return view;
+
+
     }
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        dreamsList.clear();
+//
+//        mFirestore.collection("Users").addSnapshotListener(Objects.requireNonNull(getActivity()), new EventListener<QuerySnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+//                if (queryDocumentSnapshots != null) {
+//                    for (DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()) {
+//                        if (doc.getType() == DocumentChange.Type.ADDED) {
+//                            Dreams dreams = doc.getDocument().toObject(Dreams.class);
+//                            dreamsList.add(dreams);
+//                            dreamsRecyclerAdapter.notifyDataSetChanged();
+//                        }
+//                    }
+//                }
+//            }
+//        });
+//    }
 }

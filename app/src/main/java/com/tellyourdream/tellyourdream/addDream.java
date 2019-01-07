@@ -42,8 +42,6 @@ public class addDream extends AppCompatActivity {
         dreamTranslation = findViewById(R.id.textView_translation);
         actionButton = findViewById(R.id.action_button);
 
-        actionButton = findViewById(R.id.action_button);
-
 
 
     }
